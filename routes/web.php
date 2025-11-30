@@ -10,6 +10,25 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/abouts', function () {
+    return Inertia::render('about', [
+        'canRegister' => Features::enabled(Features::registration()),
+    ]);
+})->name('abouts');
+
+Route::get('/services', function () {
+    return Inertia::render('service', [
+        'canRegister' => Features::enabled(Features::registration()),
+    ]);
+})->name('services');
+
+Route::get('/web-contacts', function () {
+    return Inertia::render('web-contact', [
+        'canRegister' => Features::enabled(Features::registration()),
+    ]);
+})->name('web-contacts');
+
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');

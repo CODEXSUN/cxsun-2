@@ -1,60 +1,27 @@
-import { dashboard, login, logout, register } from '@/routes';
-import { type SharedData } from '@/types';
-import { Head, Link, usePage } from '@inertiajs/react';
+// resources/js/pages/welcome.tsx
+import WebLayout from '@/layouts/web-layout';
 
-export default function Welcome({
-    canRegister = true,
-}: {
-    canRegister?: boolean;
-}) {
-    const { auth } = usePage<SharedData>().props;
-
+export default function Welcome() {
     return (
-        <>
-            <Head title="Welcome"/>
-            <div className="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
-                <header className="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl">
-                    <nav className="flex items-center justify-end gap-4">
-                        {auth.user ? (
-                            <>
-                                <Link
-                                    href={dashboard()}
-                                    className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                                >
-                                    Dashboard
-                                </Link>
-
-                                <Link
-                                    href={logout()}
-                                    className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                                >
-                                    Logout
-                                </Link>
-                            </>
-                        ) : (
-                            <>
-                                <Link
-                                    href={login()}
-                                    className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                                >
-                                    Log in
-                                </Link>
-                                {canRegister && (
-                                    <Link
-                                        href={register()}
-                                        className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                                    >
-                                        Register
-                                    </Link>
-                                )}
-                            </>
-                        )}
-                    </nav>
-                </header>
-                <div className="h-screen bg-amber-200 w-full">
-                    sdf
+        <WebLayout title="Welcome">
+            <section className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-amber-50 via-orange-50 to-white px-6 text-center dark:from-gray-900 dark:via-black dark:to-black">
+                <div className="max-w-4xl">
+                    <h1 className="mb-6 text-5xl font-bold tracking-tighter text-gray-900 dark:text-white md:text-6xl lg:text-7xl">
+                        Welcome to <span className="text-amber-600">CODEXSUN</span>
+                    </h1>
+                    <p className="mb-8 text-xl text-gray-600 dark:text-gray-300">
+                        Modern ERP Software built with Laravel 12, Inertia.js & React
+                    </p>
+                    <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+                        <button className="rounded-lg bg-amber-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-amber-700 hover:shadow-xl">
+                            Get Started
+                        </button>
+                        <button className="rounded-lg border-2 border-amber-600 px-8 py-4 text-lg font-semibold text-amber-600 transition-all hover:bg-amber-600 hover:text-white dark:border-amber-500 dark:text-amber-500">
+                            Learn More
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </>
+            </section>
+        </WebLayout>
     );
 }
