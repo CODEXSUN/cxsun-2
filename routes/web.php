@@ -5,25 +5,25 @@ use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
 Route::get('/', function () {
-    return Inertia::render('welcome', [
+    return Inertia::render('web/welcome', [
         'canRegister' => Features::enabled(Features::registration()),
     ]);
 })->name('home');
 
 Route::get('/abouts', function () {
-    return Inertia::render('about', [
+    return Inertia::render('web/about', [
         'canRegister' => Features::enabled(Features::registration()),
     ]);
 })->name('abouts');
 
 Route::get('/services', function () {
-    return Inertia::render('service', [
+    return Inertia::render('web/service', [
         'canRegister' => Features::enabled(Features::registration()),
     ]);
 })->name('services');
 
 Route::get('/web-contacts', function () {
-    return Inertia::render('web-contact', [
+    return Inertia::render('web/web-contact', [
         'canRegister' => Features::enabled(Features::registration()),
     ]);
 })->name('web-contacts');

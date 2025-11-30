@@ -10,7 +10,7 @@ export default function WebContact() {
                         Welcome to <span className="text-amber-600">CODEXSUN</span>
                     </h1>
                     <p className="mb-8 text-xl text-gray-600 dark:text-gray-300">
-                        Contact Us
+                        Contact Us 223
                     </p>
                 </div>
             </section>
