@@ -28,6 +28,13 @@ Route::get('/web-contacts', function () {
     ]);
 })->name('web-contacts');
 
+Route::get('/accreditations', function () {
+    return Inertia::render('web/accreditation', [
+        'canRegister' => Features::enabled(Features::registration()),
+    ]);
+})->name('accreditations');
+
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {

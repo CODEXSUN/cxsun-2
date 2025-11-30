@@ -18,10 +18,10 @@ import { useEffect, useState } from 'react';
 
 const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
+    { name: 'About', href: '/abouts' },
     { name: 'Services', href: '/services', mega: true },
     { name: 'Accreditations', href: '/accreditations' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact', href: '/web-contacts' },
 ];
 
 const services = [
@@ -67,68 +67,84 @@ export default function WebMenu() {
     const { auth } = usePage<SharedData>().props;
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const currentPath = window.location.pathname;
 
     useEffect(() => {
+        document.documentElement.style.scrollBehavior = 'smooth';
+
         const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const setTheme = (theme: 'light' | 'dark' | 'system') => {
-        if (theme === 'system')
-            document.documentElement.classList.remove('light', 'dark');
-        else
-            document.documentElement.classList.toggle('dark', theme === 'dark');
-        localStorage.setItem('theme', theme);
-    };
+    // Handle #hash links after Inertia navigation
+    useEffect(() => {
+        if (window.location.hash) {
+            setTimeout(() => {
+                document
+                    .querySelector(window.location.hash)
+                    ?.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    }, []);
 
-    const currentTheme =
-        localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light');
-
+    const currentPath = window.location.pathname;
     const isActive = (path: string) =>
         currentPath === path || currentPath.startsWith(path + '/');
+
+    const setTheme = (theme: 'light' | 'dark' | 'system') => {
+        if (theme === 'system') {
+            document.documentElement.classList.remove('light', 'dark');
+            localStorage.removeItem('theme');
+        } else {
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+            localStorage.setItem('theme', theme);
+        }
+    };
 
     return (
         <header
             className={cn(
-                'fixed inset-x-0 top-0 z-50 transition-all duration-500',
+                'fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out',
                 scrolled
                     ? 'border-b border-blue-200/20 bg-white/95 shadow-lg backdrop-blur-xl dark:border-blue-800/30 dark:bg-slate-900/95'
                     : 'bg-transparent',
             )}
         >
-            <nav className="mx-auto flex h-16 items-center justify-between px-8">
+            <nav className="mx-auto flex h-16 items-center justify-between px-6 md:px-8">
                 {/* Logo */}
                 <div className="flex items-center">
                     <Link
                         href="/"
                         className="group flex items-center space-x-4"
                     >
-                        <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600 text-xl font-black text-white shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-blue-500/40">
+                        <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br
+                        from-blue-600 to-cyan-600 text-xl font-black text-white shadow-xl transition-all duration-500 group-hover:scale-110
+                        group-hover:shadow-2xl group-hover:shadow-blue-500/50">
                             <span className="drop-shadow-lg">AL</span>
                             <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 blur-xl transition-opacity group-hover:opacity-100" />
                         </div>
 
-                        <div className="flex flex-col items-center space-x-4">
-
-                            <div className={cn(
-                                "hidden text-2xl font-black sm:block",
-                                scrolled
-                                    ? "text-gray-900 dark:text-white"
-                                    : "text-white dark:text-gray-200"
-                            )}>
+                        <div className="hidden sm:block">
+                            <div
+                                className={cn(
+                                    'text-2xl font-black transition-colors duration-500',
+                                    scrolled
+                                        ? 'text-gray-900 dark:text-white'
+                                        : 'text-white dark:text-gray-100',
+                                )}
+                            >
                                 ALTEX Labs
                             </div>
-                            <div className={cn(
-                                "hidden text-sm font-medium sm:block",
-                                scrolled
-                                    ? "text-gray-500 dark:text-gray-400"
-                                    : "text-gray-300 dark:text-cyan-400"
-                            )}>
+                            <div
+                                className={cn(
+                                    'text-sm font-medium transition-colors duration-300',
+                                    scrolled
+                                        ? 'text-gray-600 dark:text-gray-400'
+                                        : 'text-gray-200  dark:text-cyan-300',
+                                )}
+                            >
                                 Textile Testing Labs
                             </div>
                         </div>
@@ -147,58 +163,57 @@ export default function WebMenu() {
                                         <DropdownMenuTrigger asChild>
                                             <button
                                                 className={cn(
-                                                    'group relative flex items-center gap-2 px-4 py-1 text-sm font-semibold transition-all duration-300',
-                                                    // Light mode text
+                                                    'group relative flex items-center gap-2 px-4 py-2 text-sm font-semibold transition-all duration-300  bg-gradient-to-r',
                                                     scrolled
-                                                        ? 'text-gray-900 hover:text-black'
-                                                        : 'text-white hover:text-cyan-400',
-                                                    // Dark mode text
-                                                    scrolled
-                                                        ? 'dark:text-gray-100 dark:hover:text-cyan-400'
-                                                        : 'dark:text-gray-200 dark:hover:text-cyan-400',
-                                                    active && (scrolled
-                                                            ? 'text-black dark:text-cyan-400 font-bold'
-                                                            : 'text-cyan-400 dark:text-cyan-300 font-bold'
-                                                    ),
+                                                        ? 'text-gray-900 hover:text-blue-700 dark:text-gray-100 dark:hover:text-cyan-400'
+                                                        : 'text-white hover:text-cyan-300 dark:text-gray-100 dark:hover:text-cyan-300',
+                                                    active &&
+                                                        'font-bold text-blue-600 dark:text-cyan-400',
                                                 )}
                                             >
                                                 <Beaker className="h-4 w-4" />
                                                 {item.name}
-                                                <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
+                                                <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-300 group-data-[state=open]:rotate-180" />
                                                 <span
                                                     className={cn(
-                                                        'absolute top-full left-1/2 mt-3 h-1 w-16 -translate-x-1/2 rounded-full bg-gradient-to-r ' +
-                                                            'from-white to-cyan-500 transition-all duration-500',
-                                                        'scale-0 group-hover:scale-100 group-data-[state=open]:scale-100',
+                                                        'absolute -bottom-1 left-1/2 h-0.5 w-12 -translate-x-1/2 rounded-full transition-all duration-500 ease-out  bg-gradient-to-r',
+                                                        scrolled
+                                                            ? 'bg-blue-600 dark:bg-cyan-500'
+                                                            : 'from-white to-cyan-500',
+                                                        'scale-x-0 group-hover:scale-x-100 group-data-[state=open]:scale-x-100',
+                                                        active && 'scale-x-100',
                                                     )}
                                                 />
                                             </button>
                                         </DropdownMenuTrigger>
 
                                         <DropdownMenuContent
-                                            className="w-96 border-2 border-blue-200/50 p-6 shadow-2xl dark:border-cyan-800/50"
+                                            className="w-96 border-2 border-blue-200/50 bg-white/95 p-6 shadow-2xl backdrop-blur-xl dark:border-cyan-800/50 dark:bg-slate-900/95"
                                             align="center"
                                             sideOffset={16}
                                         >
-                                            <DropdownMenuLabel className="text-2xl font-bold text-cyan-500 dark:text-cyan-400">
+                                            <DropdownMenuLabel className="text-2xl font-bold text-cyan-600 dark:text-cyan-400">
                                                 Our Testing Services
                                             </DropdownMenuLabel>
-
                                             <DropdownMenuSeparator className="bg-blue-200 dark:bg-cyan-800" />
-
                                             <div className="mt-6 grid grid-cols-2 gap-5">
                                                 {services.map((service) => (
                                                     <Link
                                                         key={service.title}
                                                         href={service.href}
-                                                        className="group/item block rounded-xl border border-slate-200 bg-slate-50 p-5 transition-all hover:border-blue-400 hover:shadow-lg dark:border-slate-700 dark:bg-slate-800 dark:hover:border-cyan-600"
+                                                        className="group/item block rounded-xl border border-slate-200 bg-slate-50 p-5 transition-all hover:border-blue-500 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800 dark:hover:border-cyan-500"
                                                     >
                                                         <div className="flex items-start gap-4">
                                                             <div className="text-3xl">
                                                                 {service.icon}
                                                             </div>
                                                             <div>
-                                                                <h4 className="font-bold text-white group-hover/item:text-cyan-500 dark:text-slate-100 dark:group-hover/item:text-cyan-400">
+                                                                <h4
+                                                                    className={cn(
+                                                                        'font-bold transition-colors',
+                                                                        'text-gray-900 group-hover/item:text-blue-600 dark:text-white dark:group-hover/item:text-cyan-400',
+                                                                    )}
+                                                                >
                                                                     {
                                                                         service.title
                                                                     }
@@ -210,7 +225,7 @@ export default function WebMenu() {
                                                                 </p>
                                                             </div>
                                                         </div>
-                                                        <div className="mt-3 flex items-center text-sm font-medium text-cyan-500 dark:text-cyan-400">
+                                                        <div className="mt-4 flex items-center text-sm font-medium text-blue-600 dark:text-cyan-400">
                                                             Learn more{' '}
                                                             <ChevronDown className="ml-1 h-4 w-4 rotate-[-90deg] transition-transform group-hover/item:rotate-0" />
                                                         </div>
@@ -227,43 +242,23 @@ export default function WebMenu() {
                                     key={item.name}
                                     href={item.href}
                                     className={cn(
-                                        'group relative px-3 py-1 text-sm font-semibold transition-all duration-300',
-                                        // Light mode text
+                                        'group relative px-4 py-2 text-sm font-semibold transition-all duration-300',
                                         scrolled
-                                            ? 'text-gray-900 hover:text-black'
-                                            : 'text-white hover:text-cyan-400',
-                                        // Dark mode text
-                                        scrolled
-                                            ? 'dark:text-gray-100 dark:hover:text-cyan-400'
-                                            : 'dark:text-gray-200 dark:hover:text-cyan-400',
-                                        active && (scrolled
-                                                ? 'text-black dark:text-cyan-400 font-bold'
-                                                : 'text-cyan-400 dark:text-cyan-300 font-bold'
-                                        ),
+                                            ? 'text-gray-900 hover:text-blue-700 dark:text-gray-100 dark:hover:text-cyan-400'
+                                            : 'text-white hover:text-cyan-300 dark:text-gray-100 dark:hover:text-cyan-300',
+                                        active &&
+                                            'font-bold text-blue-600 dark:text-cyan-400',
                                     )}
                                 >
                                     {item.name}
                                     <span
                                         className={cn(
-                                            'absolute top-full left-1/2 mt-3 h-1 w-16 -translate-x-1/2 rounded-full bg-gradient-to-r' +
-                                                ' from-white to-cyan-500 transition-all duration-500',
-                                            'scale-0 group-hover:scale-100',
-                                            active && 'scale-100',
-
-
-                                            // Light mode text
+                                            'absolute -bottom-1 left-1/2 h-0.5 w-12 -translate-x-1/2 rounded-full transition-all duration-500 ease-out  bg-gradient-to-r',
                                             scrolled
-                                                ? 'text-gray-900 hover:text-black'
-                                                : 'text-white hover:text-cyan-400',
-                                            // Dark mode text
-                                            scrolled
-                                                ? 'dark:text-gray-100 dark:hover:text-cyan-400'
-                                                : 'dark:text-gray-200 dark:hover:text-cyan-400',
-                                            active && (scrolled
-                                                    ? 'text-black dark:text-cyan-400 font-bold'
-                                                    : 'text-cyan-400 dark:text-cyan-300 font-bold'
-                                            ),
-
+                                                ? 'bg-blue-600 dark:bg-cyan-500'
+                                                : 'from-white to-cyan-500',
+                                            'scale-x-0 group-hover:scale-x-100',
+                                            active && 'scale-x-100',
                                         )}
                                     />
                                 </Link>
@@ -274,14 +269,14 @@ export default function WebMenu() {
 
                 {/* Right Side */}
                 <div className="flex items-center space-x-4">
-                    {/* Auth Buttons */}
+                    {/* Desktop Auth */}
                     <div className="hidden items-center space-x-3 lg:flex">
                         {auth.user ? (
                             <>
                                 <Button
                                     asChild
                                     variant="outline"
-                                    className="border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/30"
+                                    className="border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20"
                                 >
                                     <Link href={dashboard()}>Dashboard</Link>
                                 </Button>
@@ -303,7 +298,7 @@ export default function WebMenu() {
                                 <Button
                                     asChild
                                     variant="ghost"
-                                    className="text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/30"
+                                    className="text-blue-600 hover:bg-blue-50 dark:text-cyan-400 dark:hover:bg-blue-900/20"
                                 >
                                     <Link href={login()}>Log in</Link>
                                 </Button>
@@ -317,15 +312,19 @@ export default function WebMenu() {
                         )}
                     </div>
 
-                    {/* Theme Toggle */}
+                    {/* Theme Toggle - FIXED */}
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button
                                 variant="ghost"
                                 size="icon"
-                                className="text-slate-700 hover:bg-blue-50 dark:text-slate-300 dark:hover:bg-blue-900/30"
+                                className="text-gray-700 dark:text-gray-300"
                             >
-                                {currentTheme === 'dark' ? (
+                                {localStorage.getItem('theme') === 'dark' ||
+                                (!localStorage.getItem('theme') &&
+                                    window.matchMedia(
+                                        '(prefers-color-scheme: dark)',
+                                    ).matches) ? (
                                     <Moon className="h-5 w-5" />
                                 ) : (
                                     <Sun className="h-5 w-5" />
@@ -390,10 +389,10 @@ export default function WebMenu() {
                                                 setMobileMenuOpen(false)
                                             }
                                             className={cn(
-                                                'block py-3 text-lg font-semibold',
+                                                'block py-3 text-lg font-semibold transition-colors',
                                                 isActive(item.href)
                                                     ? 'text-blue-600'
-                                                    : 'text-slate-700',
+                                                    : 'text-slate-800 dark:text-slate-200',
                                             )}
                                         >
                                             {item.name}
@@ -409,7 +408,7 @@ export default function WebMenu() {
                                                                 false,
                                                             )
                                                         }
-                                                        className="block text-sm text-slate-600 hover:text-blue-600"
+                                                        className="block text-sm text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-cyan-400"
                                                     >
                                                         {s.icon} {s.title}
                                                     </Link>

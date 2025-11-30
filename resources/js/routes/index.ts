@@ -495,7 +495,78 @@ webContacts.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     
     webContacts.form = webContactsForm
 /**
- * @see routes/web.php:33
+ * @see routes/web.php:31
+ * @route '/accreditations'
+ */
+export const accreditations = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: accreditations.url(options),
+    method: 'get',
+})
+
+accreditations.definition = {
+    methods: ["get","head"],
+    url: '/accreditations',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+ * @see routes/web.php:31
+ * @route '/accreditations'
+ */
+accreditations.url = (options?: RouteQueryOptions) => {
+    return accreditations.definition.url + queryParams(options)
+}
+
+/**
+ * @see routes/web.php:31
+ * @route '/accreditations'
+ */
+accreditations.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: accreditations.url(options),
+    method: 'get',
+})
+/**
+ * @see routes/web.php:31
+ * @route '/accreditations'
+ */
+accreditations.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: accreditations.url(options),
+    method: 'head',
+})
+
+    /**
+ * @see routes/web.php:31
+ * @route '/accreditations'
+ */
+    const accreditationsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: accreditations.url(options),
+        method: 'get',
+    })
+
+            /**
+ * @see routes/web.php:31
+ * @route '/accreditations'
+ */
+        accreditationsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: accreditations.url(options),
+            method: 'get',
+        })
+            /**
+ * @see routes/web.php:31
+ * @route '/accreditations'
+ */
+        accreditationsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: accreditations.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    accreditations.form = accreditationsForm
+/**
+ * @see routes/web.php:40
  * @route '/dashboard'
  */
 export const dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -509,7 +580,7 @@ dashboard.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see routes/web.php:33
+ * @see routes/web.php:40
  * @route '/dashboard'
  */
 dashboard.url = (options?: RouteQueryOptions) => {
@@ -517,7 +588,7 @@ dashboard.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see routes/web.php:33
+ * @see routes/web.php:40
  * @route '/dashboard'
  */
 dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -525,7 +596,7 @@ dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     method: 'get',
 })
 /**
- * @see routes/web.php:33
+ * @see routes/web.php:40
  * @route '/dashboard'
  */
 dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -534,7 +605,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
     /**
- * @see routes/web.php:33
+ * @see routes/web.php:40
  * @route '/dashboard'
  */
     const dashboardForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -543,7 +614,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     })
 
             /**
- * @see routes/web.php:33
+ * @see routes/web.php:40
  * @route '/dashboard'
  */
         dashboardForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -551,7 +622,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
             /**
- * @see routes/web.php:33
+ * @see routes/web.php:40
  * @route '/dashboard'
  */
         dashboardForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
