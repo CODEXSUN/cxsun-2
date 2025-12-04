@@ -119,9 +119,7 @@ export default function WebMenu() {
                         href="/"
                         className="group flex items-center space-x-4"
                     >
-                        <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br
-                        from-blue-600 to-cyan-600 text-xl font-black text-white shadow-xl transition-all duration-500 group-hover:scale-110
-                        group-hover:shadow-2xl group-hover:shadow-blue-500/50">
+                        <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600 text-xl font-black text-white shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-blue-500/50">
                             <span className="drop-shadow-lg">AL</span>
                             <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 blur-xl transition-opacity group-hover:opacity-100" />
                         </div>
@@ -138,13 +136,12 @@ export default function WebMenu() {
                                 ALTEX Labs
                             </div>
 
-
                             <div
                                 className={cn(
                                     'text-sm font-medium transition-colors duration-300',
                                     scrolled
                                         ? 'text-gray-600 dark:text-gray-400'
-                                        : 'text-gray-200  dark:text-cyan-300',
+                                        : 'text-gray-200 dark:text-cyan-300',
                                 )}
                             >
                                 Textile Testing Labs
@@ -165,7 +162,7 @@ export default function WebMenu() {
                                         <DropdownMenuTrigger asChild>
                                             <button
                                                 className={cn(
-                                                    'group relative flex items-center gap-2 px-4 py-2 text-sm font-semibold transition-all duration-300  bg-gradient-to-r',
+                                                    'group relative flex items-center gap-2 bg-gradient-to-r px-4 py-2 text-sm font-semibold transition-all duration-300',
                                                     scrolled
                                                         ? 'text-gray-900 hover:text-cyan-700 dark:text-gray-100 dark:hover:text-cyan-400'
                                                         : 'text-white hover:text-cyan-300 dark:text-gray-100 dark:hover:text-cyan-300',
@@ -178,7 +175,7 @@ export default function WebMenu() {
                                                 <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-300 group-data-[state=open]:rotate-180" />
                                                 <span
                                                     className={cn(
-                                                        'absolute -bottom-1 left-1/2 h-0.5 w-12 -translate-x-1/2 rounded-full transition-all duration-500 ease-out  bg-gradient-to-r',
+                                                        'absolute -bottom-1 left-1/2 h-0.5 w-12 -translate-x-1/2 rounded-full bg-gradient-to-r transition-all duration-500 ease-out',
                                                         scrolled
                                                             ? 'bg-blue-600 dark:bg-cyan-500'
                                                             : 'from-white to-cyan-500',
@@ -255,7 +252,7 @@ export default function WebMenu() {
                                     {item.name}
                                     <span
                                         className={cn(
-                                            'absolute -bottom-1 left-1/2 h-0.5 w-12 -translate-x-1/2 rounded-full transition-all duration-500 ease-out  bg-gradient-to-r',
+                                            'absolute -bottom-1 left-1/2 h-0.5 w-12 -translate-x-1/2 rounded-full bg-gradient-to-r transition-all duration-500 ease-out',
                                             scrolled
                                                 ? 'bg-cyan-600 dark:bg-cyan-500'
                                                 : 'from-white to-cyan-500',
@@ -320,7 +317,12 @@ export default function WebMenu() {
                             <Button
                                 variant="ghost"
                                 size="icon"
-                                className="text-gray-100 dark:text-gray-300"
+                                className={cn(
+
+                                    scrolled
+                                        ? ''
+                                        : 'bg-transparent text-white',
+                                )}
                             >
                                 {localStorage.getItem('theme') === 'dark' ||
                                 (!localStorage.getItem('theme') &&
@@ -362,11 +364,16 @@ export default function WebMenu() {
                     >
                         <SheetTrigger asChild className="lg:hidden">
                             <Button variant="ghost" size="icon">
-                                <Menu className="h-6 w-6" />
+                                <Menu  className={cn("w-6 h-6",
+
+                                    scrolled
+                                        ? ''
+                                        : 'bg-transparent text-white',
+                                )} />
                             </Button>
                         </SheetTrigger>
                         <SheetContent side="right" className="w-80">
-                            <div className="flex flex-col space-y-8 pt-8">
+                            <div className="flex flex-col items-start justify-start space-y-8 pt-8 pl-5">
                                 <div className="text-center">
                                     <div className="inline-flex items-center gap-3">
                                         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600 text-xl font-black text-white">
