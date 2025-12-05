@@ -30,7 +30,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
     return (
-        <section className="py-20 bg-gradient-to-br from-blue-900/90 to-blue-800/60">
+        <section className="py-20 bg-background">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -38,10 +38,10 @@ export default function TestimonialsSection() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
                         Trusted by 5000+ Customers
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-300">
+                    <p className="text-xl text-foreground">
                         Real stories from real people
                     </p>
                 </motion.div>

@@ -44,10 +44,10 @@ const ProcessCard: React.FC<ProcessCardProps> = ({ steps }) => {
               index % 2 === 0 ? "md:order-2" : "md:order-1"
             }`}
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground">
               {step.title}
             </h3>
-            <p className="text-primary-foreground/70 text-lg mt-4">{step.description}</p>
+            <p className="text-foreground/70 text-lg mt-4">{step.description}</p>
           </div>
         </div>
       ))}

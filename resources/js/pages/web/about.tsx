@@ -89,9 +89,9 @@ export default function About() {
                     </div>
                 </div>
 
-                <div className="grid gap-6 px-4 pt-20 md:grid-cols-3 lg:px-[10%]">
+                <div className="grid gap-6 px-4 py-20 md:grid-cols-3 lg:px-[10%]">
                     {/* Vision */}
-                    <div className="overflow-hidden rounded-2xl border border-ring/30 bg-background bg-gradient-to-br from-blue-900/90 to-blue-800/60 p-6 shadow-lg transition hover:shadow-xl">
+                    <div className="overflow-hidden rounded-2xl border border-ring/30 bg-gradient-to-br from-primary to-secondary p-6 shadow-lg transition hover:shadow-xl">
                         {/* TEXT (always on top) */}
                         <div className="relative z-10">
                             <h3 className="mb-3 text-2xl font-semibold text-primary-foreground">
@@ -107,7 +107,7 @@ export default function About() {
                     </div>
 
                     {/* Mission */}
-                    <div className="rounded-2xl border border-ring/30 bg-gradient-to-br from-blue-900/90 to-blue-800/60 p-6 text-white shadow-lg transition hover:shadow-xl">
+                    <div className="rounded-2xl border border-ring/30 bg-gradient-to-br from-primary to-secondary p-6 text-white shadow-lg transition hover:shadow-xl">
                         <h3 className="mb-3 text-2xl font-semibold text-primary-foreground">
                             Our Mission
                         </h3>
@@ -125,7 +125,7 @@ export default function About() {
                     </div>
 
                     {/* Values */}
-                    <div className="rounded-2xl border border-ring/30 bg-background bg-gradient-to-br from-blue-900/90 to-blue-800/60 p-6 shadow-lg transition hover:shadow-xl">
+                    <div className="rounded-2xl border border-ring/30 bg-gradient-to-br from-primary to-secondary p-6 shadow-lg transition hover:shadow-xl">
                         <h3 className="mb-3 text-2xl font-semibold text-primary-foreground">
                             Our Values
                         </h3>
@@ -149,6 +149,15 @@ export default function About() {
                         </ul>
                     </div>
                 </div>
+
+
+                <ProcessHighlightSection
+                    title="Why Choose ALTEX LABS?"
+                    description="Link Agro Cocopeat - 100% Eco-friendly and Organic soilless growing substrate"
+                    imageUrl="/images/home/slider/textile4.jpg"
+                    bgimage="/images/home/slider/textile3.jpg"
+                    steps={processSteps}
+                />
                 <div className="my-12 rounded-2xl px-4 lg:px-[10%]">
                     <h2 className="mb-4 text-2xl font-bold text-foreground md:text-3xl">
                         Accreditation & Standards
@@ -208,14 +217,6 @@ export default function About() {
                         </div>
                     </div>
                 </div>
-
-                <ProcessHighlightSection
-                    title="Why Choose ALTEX LABS?"
-                    description="Link Agro Cocopeat - 100% Eco-friendly and Organic soilless growing substrate"
-                    imageUrl="/images/home/slider/textile4.jpg"
-                    bgimage="/images/home/slider/textile3.jpg"
-                    steps={processSteps}
-                />
             </div>
         </WebLayout>
     );

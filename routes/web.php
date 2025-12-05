@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
+use App\Http\Controllers\ServiceController;
 
 Route::get('/', function () {
     return Inertia::render('web/welcome', [
@@ -41,5 +42,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/service/{id}', [ServiceController::class, 'show'])
+    ->name('service.show');
 
 require __DIR__.'/settings.php';

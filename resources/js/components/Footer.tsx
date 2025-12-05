@@ -4,9 +4,9 @@ import { FaAngleRight, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 
 export default function Footer() {
     return (
-        <footer className="bg-footer pt-16 pb-6 text-gray-300">
+        <footer className="bg-footer pt-16 pb-6 text-gray-300 px-4">
             {/* ───── HEADER TOP BOXES ───── */}
-            <div className="mx-auto mb-16 grid max-w-6xl grid-cols-1 gap-8 px-4 md:grid-cols-3">
+            <div className="mx-auto mb-16 grid grid-cols-1 gap-8 px-4 md:grid-cols-3">
                 {/* Location */}
                 <div className="border border-gray-700 p-6">
                     <h3 className="mb-4 text-xl font-bold">Where We Are</h3>
@@ -49,8 +49,9 @@ export default function Footer() {
                 </div>
             </div>
 
+            <hr className="border-ring/30" />
             {/* ───── MAIN FOOTER CONTENT ───── */}
-            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 md:grid-cols-4">
+            <div className="mx-auto grid grid-cols-1 gap-10 px-4 pt-6 md:grid-cols-4">
                 {/* About */}
                 <div>
                     <h3 className="mb-2 text-xl font-bold">ABOUT US</h3>
@@ -183,7 +184,7 @@ export default function Footer() {
             </div>
 
             {/* ───── COPYRIGHT ───── */}
-            <div className="mt-12 text-center text-sm text-gray-500">
+            <div className="mt-6 border-t border-ring/30 pt-6 text-center text-sm text-gray-500">
                 © {new Date().getFullYear()} Altex Labs — All Rights Reserved
             </div>
         </footer>

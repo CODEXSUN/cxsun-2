@@ -457,16 +457,16 @@ export default function Welcome() {
             </Head>
 
             <AlTexSlider />
-            <div className="bg-gradient-to-r from-primary via-primary/80 to-secondary px-4 pb-15 lg:px-[10%]">
-                <p className="pt-10 text-center text-3xl font-bold text-primary-foreground">
+            <div className="px-4 pb-15 lg:px-[10%] bg-background">
+                <p className="pt-10 text-center text-3xl font-bold text-foreground">
                     How It Works
                 </p>
                 <ProcessCard steps={steps} />
             </div>
-            {/* WHY CHOOSE US */}
-            <section className="bg-muted/50 py-20">
+            {/* WHY Garments brand */}
+            <section className="bg-gradient-to-br from-blue-950/95 via-blue-900/80 to-blue-600/70 py-20">
                 <div className="container mx-auto px-6">
-                    <h2 className="mb-12 text-center text-4xl font-bold">
+                    <h2 className="mb-12 text-center text-4xl font-bold text-primary-foreground">
                         Why Garment Brands Trust ALTEX
                     </h2>
                     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -494,10 +494,10 @@ export default function Welcome() {
                         ].map((item) => (
                             <div key={item.title} className="text-center">
                                 <item.icon className="mx-auto mb-4 h-16 w-16 text-cyan-600" />
-                                <h3 className="text-xl font-bold">
+                                <h3 className="text-xl font-bold text-primary-foreground">
                                     {item.title}
                                 </h3>
-                                <p className="mt-2 text-muted-foreground">
+                                <p className="mt-2 text-primary-foreground/80">
                                     {item.desc}
                                 </p>
                             </div>
@@ -505,11 +505,11 @@ export default function Welcome() {
                     </div>
                 </div>
             </section>
-            <div className="bg-gradient-to-br from-blue-950/95 via-blue-900/80 to-blue-600/70 px-4 py-10 md:px-[10%]">
-                <h1 className="text-center text-4xl font-bold tracking-wider text-primary-foreground uppercase">
+            <div className="bg-background px-4 py-10 md:px-[10%]">
+                <h1 className="text-center text-4xl font-bold tracking-wider text-foreground uppercase">
                     Our Services
                 </h1>
-                <p className="mx-auto mt-4 max-w-2xl pb-10 text-center text-primary-foreground">
+                <p className="mx-auto mt-4 max-w-2xl pb-10 text-center text-foreground">
                     We provide a range of professional services tailored to meet
                     your exact requirements. Explore our offerings below and
                     discover how we can help your business thrive.
@@ -548,7 +548,7 @@ export default function Welcome() {
 
             <Counters />
             {/* MAJOR TESTS TABLE */}
-            <section className="bg-gradient-to-br from-blue-900/90 to-blue-800/60 py-20">
+            <section className="bg-background py-20">
                 <div className="container mx-auto px-6">
                     <h2 className="mb-12 text-center text-4xl font-bold">
                         Popular Tests & Turnaround Time
@@ -617,9 +617,9 @@ export default function Welcome() {
             </section>
 
             {/* CLIENT LOGOS */}
-            <section className="bg-muted/50 py-20">
+            <section className="bg-gradient-to-br from-blue-900 to-blue-800  py-20">
                 <div className="container mx-auto px-6 text-center">
-                    <h2 className="mb-12 text-4xl font-bold">
+                    <h2 className="mb-12 text-4xl font-bold text-primary-foreground">
                         Trusted by Leading Brands & Exporters
                     </h2>
                     <div className="grid grid-cols-3 gap-8 opacity-70 grayscale md:grid-cols-6">
@@ -637,7 +637,7 @@ export default function Welcome() {
                             'Adidas',
                             'Nike',
                         ].map((brand) => (
-                            <div key={brand} className="text-3xl font-bold">
+                            <div key={brand} className="text-3xl font-bold text-primary-foreground">
                                 {brand}
                             </div>
                         ))}

@@ -28,37 +28,37 @@ const services = [
     {
         title: 'Physical Testing',
         desc: 'Tensile, Tear, Pilling, Seam Strength',
-        href: '/services/physical',
+        href: '/service/comprehensive-textile-testing-services',
         icon: 'Strength',
     },
     {
         title: 'Color Fastness',
         desc: 'Washing, Light, Rubbing, Perspiration',
-        href: '/services/color-fastness',
+        href: '/service/physical-performance-testing',
         icon: 'Droplet',
     },
     {
         title: 'Chemical Testing',
         desc: 'Azo Dye, Formaldehyde, pH, Heavy Metals',
-        href: '/services/chemical',
+        href: '/service/colour-fastness-durability',
         icon: 'Flask',
     },
     {
         title: 'Fiber Analysis',
         desc: 'Composition, Identification, Blend Ratio',
-        href: '/services/fiber',
+        href: '/service/fibre-material-identification',
         icon: 'Microscope',
     },
     {
         title: 'Eco & Compliance',
         desc: 'OEKO-TEX, GOTS, REACH, ZDHC, CPSIA',
-        href: '/services/eco',
+        href: '/service/chemical-regulatory-compliance',
         icon: 'Leaf',
     },
     {
         title: 'Performance Tests',
         desc: 'Flammability, Water Repellency, Breathability',
-        href: '/services/performance',
+        href: '/service/custom-contract-testing',
         icon: 'Shield',
     },
 ];
@@ -187,22 +187,22 @@ export default function WebMenu() {
                                         </DropdownMenuTrigger>
 
                                         <DropdownMenuContent
-                                            className="w-96 border-2 border-blue-200/50 bg-white/95 p-6 shadow-2xl backdrop-blur-xl dark:border-cyan-800/50 dark:bg-slate-900/95"
+                                            className="w-max border-2 border-blue-200/50 bg-white/95 p-6 shadow-2xl backdrop-blur-xl dark:border-cyan-800/50 dark:bg-slate-900/95"
                                             align="center"
                                             sideOffset={16}
                                         >
                                             <DropdownMenuLabel className="text-2xl font-bold text-cyan-600 dark:text-cyan-400">
                                                 Our Testing Services
                                             </DropdownMenuLabel>
-                                            <DropdownMenuSeparator className="bg-blue-200 dark:bg-cyan-800" />
-                                            <div className="mt-6 grid grid-cols-2 gap-5">
+                                            <DropdownMenuSeparator className="overflow-y-auto bg-blue-200 dark:bg-cyan-800" />
+                                            <div className="mt-6 grid grid-cols-3 gap-5">
                                                 {services.map((service) => (
                                                     <Link
                                                         key={service.title}
                                                         href={service.href}
                                                         className="group/item block rounded-xl border border-slate-200 bg-slate-50 p-5 transition-all hover:border-blue-500 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800 dark:hover:border-cyan-500"
                                                     >
-                                                        <div className="flex items-start gap-4">
+                                                        <div className="flex flex-col items-start gap-4">
                                                             <div className="text-3xl">
                                                                 {service.icon}
                                                             </div>
@@ -318,10 +318,7 @@ export default function WebMenu() {
                                 variant="ghost"
                                 size="icon"
                                 className={cn(
-
-                                    scrolled
-                                        ? ''
-                                        : 'bg-transparent text-white',
+                                    scrolled ? '' : 'bg-transparent text-white',
                                 )}
                             >
                                 {localStorage.getItem('theme') === 'dark' ||
@@ -364,12 +361,15 @@ export default function WebMenu() {
                     >
                         <SheetTrigger asChild className="lg:hidden">
                             <Button variant="ghost" size="icon">
-                                <Menu  className={cn("w-6 h-6",
+                                <Menu
+                                    className={cn(
+                                        'h-6 w-6',
 
-                                    scrolled
-                                        ? ''
-                                        : 'bg-transparent text-white',
-                                )} />
+                                        scrolled
+                                            ? ''
+                                            : 'bg-transparent text-white',
+                                    )}
+                                />
                             </Button>
                         </SheetTrigger>
                         <SheetContent side="right" className="w-80">
