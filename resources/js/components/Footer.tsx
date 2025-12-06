@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { Link } from '@inertiajs/react';
-import { FaAngleRight, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
+import { FaAngleRight, FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 export default function Footer() {
     return (
@@ -48,15 +48,21 @@ export default function Footer() {
                     <div className="mt-6 flex gap-3">
                         <a
                             href="#"
-                            className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800"
+                            className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 hover:scale-115"
                         >
                             <FaFacebookF />
                         </a>
                         <a
                             href="#"
-                            className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800"
+                            className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 hover:scale-115"
                         >
                             <FaLinkedinIn />
+                        </a>
+                        <a
+                            href="#"
+                            className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 hover:scale-115"
+                        >
+                            <FaInstagram />
                         </a>
                     </div>
                 </div>
@@ -91,7 +97,7 @@ export default function Footer() {
                         ].map((m, i) => (
                             <li
                                 key={i}
-                                className="flex cursor-pointer gap-2 hover:text-footer-foreground"
+                                className="flex items-center cursor-pointer gap-2 hover:text-footer-foreground"
                             >
                                 <span>
                                     <FaAngleRight />

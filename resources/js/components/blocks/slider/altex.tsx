@@ -86,6 +86,7 @@ export default function AltexHeroSlider() {
     const [isPlaying, setIsPlaying] = useState(true);
     const [progress, setProgress] = useState(0);
     const [direction, setDirection] = useState(0);
+    // eslint-disable-next-line react-hooks/purity
     const startTime = useRef(Date.now());
     const duration = 7000;
 
@@ -162,7 +163,7 @@ export default function AltexHeroSlider() {
                                     initial={{ opacity: 0, y: 40 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8, ease: 'easeOut' }}
-                                    className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight"
+                                    className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight"
                                 >
                                     {slides[current].title.split(' ').map((word, i) => (
                                         <motion.span
@@ -192,7 +193,7 @@ export default function AltexHeroSlider() {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: 1.1 }}
-                                    className="mt-10 flex flex-wrap gap-4"
+                                    className="mt-5 sm:mt-10 flex flex-wrap gap-4"
                                 >
                                     {slides[current].highlights.map((item, i) => (
                                         <motion.div
@@ -202,7 +203,7 @@ export default function AltexHeroSlider() {
                                             transition={{ delay: 1.2 + i * 0.1 }}
                                             className="flex items-center gap-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 text-blue-50"
                                         >
-                                            <CheckCircle2 className="h-5 w-5 text-cyan-400" />
+                                            <CheckCircle2 className="h-5 w-5 text-cyan-400 shrink-0" />
                                             <span className="font-medium">{item}</span>
                                         </motion.div>
                                     ))}
@@ -213,7 +214,7 @@ export default function AltexHeroSlider() {
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 1.5 }}
-                                    className="mt-12"
+                                    className="mt-6 sm:mt-12"
                                 >
                                     <Link
                                         href={slides[current].action.href}
@@ -233,7 +234,7 @@ export default function AltexHeroSlider() {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: 1.8 }}
-                                    className="mt-16 flex flex-wrap items-center gap-8 text-blue-200 text-lg"
+                                    className="mt-5 sm:mt-16 flex flex-wrap items-center gap-8 text-blue-200 text-lg"
                                 >
                                     <div className="flex items-center gap-3">
                                         <ShieldCheck className="h-6 w-6 text-cyan-400" /> ISO 17025 Accredited
@@ -300,10 +301,10 @@ export default function AltexHeroSlider() {
             </div>
 
             {/* Navigation Arrows */}
-            <button onClick={prev} className="absolute left-6 top-1/2 -translate-y-1/2 z-30 rounded-full bg-white/20 p-4 backdrop-blur-xl text-white hover:bg-white/30 hover:scale-110 transition">
+            <button onClick={prev} className="absolute hidden sm:block left-6 top-1/2 -translate-y-1/2 z-30 rounded-full bg-white/20 p-4 backdrop-blur-xl text-white hover:bg-white/30 hover:scale-110 transition">
                 <ChevronLeft className="h-8 w-8" />
             </button>
-            <button onClick={next} className="absolute right-6 top-1/2 -translate-y-1/2 z-30 rounded-full bg-white/20 p-4 backdrop-blur-xl text-white hover:bg-white/30 hover:scale-110 transition">
+            <button onClick={next} className="absolute hidden sm:block right-6 top-1/2 -translate-y-1/2 z-30 rounded-full bg-white/20 p-4 backdrop-blur-xl text-white hover:bg-white/30 hover:scale-110 transition">
                 <ChevronRight className="h-8 w-8" />
             </button>
 
