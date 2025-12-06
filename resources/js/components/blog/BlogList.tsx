@@ -80,7 +80,7 @@ const handleBlog = (id: string) => {
                 <div className="mt-2 text-xs text-muted-foreground flex flex-wrap gap-2">
                   <span className="font-semibold">{blog.author.name}</span>
                   <span>{blog.date}</span>
-                  <span className="bg-primary/10 px-2 rounded text-primary">
+                  <span className="bg-foreground px-2 rounded text-primary">
                     {blog.category}
                   </span>
                   {/* <span>👍 {blog.l}</span> */}

@@ -135,7 +135,7 @@ export default function BlogCard({ blogs, title }: BlogCarouselCardProps) {
                                         loading="lazy"
                                         className="h-full w-full rounded-tl-2xl rounded-tr-2xl object-cover"
                                     />
-                                    <p className="bg-highlight1 text-highlight1-foreground absolute top-2 left-2 rounded-full px-2 py-1 text-sm font-semibold">
+                                    <p className="bg-primary text-highlight1-foreground absolute top-2 left-2 rounded-full px-2 py-1 text-sm font-semibold">
                                         {b.category}
                                     </p>
                                 </div>
