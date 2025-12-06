@@ -5,9 +5,11 @@ import ProcessCard from '@/components/blocks/process/ProcessCard';
 import AlTexSlider from '@/components/blocks/slider/altex';
 import Counters from '@/components/blocks/slider/Counters';
 import FloatingWhatsApp from '@/components/blocks/slider/FloatingWhatsApp';
+import BlogCard from '@/components/blog/blogCard';
 import BrandMarquee from '@/components/pvr/BrandMarquee';
 import ServiceCard, { Service } from '@/components/ServiceCard';
 import { Button } from '@/components/ui/button';
+import { Blogs } from '@/data/blog';
 import WebLayout from '@/layouts/web-layout';
 import { Head } from '@inertiajs/react';
 import {
@@ -28,6 +30,7 @@ import {
     FaTools,
     FaWarehouse,
 } from 'react-icons/fa';
+// import { BlogPost } from './blogs';
 export const services: Service[] = [
     {
         id: 'comprehensive-textile-testing-services',
@@ -420,6 +423,8 @@ export const services: Service[] = [
         link: '/services/project-management',
     },
 ];
+
+
 export default function Welcome() {
     const steps = [
         {
@@ -650,6 +655,10 @@ export default function Welcome() {
                 </div>
             </section>
 
+            <div className="my-15 p-4 lg:px-[10%]">
+                <BlogCard blogs={Blogs} title={'Our Latest News & Blogs'} />
+            </div>
+
             {/* TESTIMONIALS */}
             <TestimonialsSection />
 
@@ -698,7 +707,7 @@ export default function Welcome() {
                     <div className="grid gap-8 text-center md:grid-cols-3">
                         <div>
                             <MapPin className="mx-auto mb-4 h-12 w-12 text-cyan-600" />
-                            <h3 className="text-xl font-bold mb-2">Location</h3>
+                            <h3 className="mb-2 text-xl font-bold">Location</h3>
                             <p className="">
                                 ALTEX LABS <br />
                                 Textile Testing Laboratory
@@ -709,21 +718,27 @@ export default function Welcome() {
                                 Tiruppur-641602 Tamilnadu.
                             </p>
                         </div>
-                        <div className=' flex flex-col'>
+                        <div className="flex flex-col">
                             <Phone className="mx-auto mb-4 h-12 w-12 text-cyan-600" />
-                            <h3 className="text-xl font-bold mb-2">
+                            <h3 className="mb-2 text-xl font-bold">
                                 Call / WhatsApp
                             </h3>
-                            <a href='tel:9566646863' className="text-xl font-bold">
+                            <a
+                                href="tel:9566646863"
+                                className="text-xl font-bold"
+                            >
                                 +91 95 66 64 68 63
                             </a>
-                            <a href='tel:9566686062' className="text-xl font-bold">
+                            <a
+                                href="tel:9566686062"
+                                className="text-xl font-bold"
+                            >
                                 +91 95 66 68 60 62
                             </a>
                         </div>
                         <div>
                             <Mail className="mx-auto mb-4 h-12 w-12 text-cyan-600" />
-                            <h3 className="text-xl font-bold mb-2">Email Us</h3>
+                            <h3 className="mb-2 text-xl font-bold">Email Us</h3>
                             <p className="text-lg"> info@altexlabs.in</p>
                             <p className="text-lg"> csk@altexlabs.in </p>
                             <p>Sample Submission & Logistics</p>
